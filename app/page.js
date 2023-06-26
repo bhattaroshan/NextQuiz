@@ -89,13 +89,13 @@ export default function Home() {
       <div className="grid grid-cols-4 gap-4">
         {
         categories.map((v,i)=>{
-          return <Link href={{
+          return <Link key={i} href={{
             pathname:"/questions",
             query:{
               topic:v.name.toLowerCase()
             }
           }}>
-                <div key={i} className={`w-16 h-16 md:w-40 md:h-40 ${v.color} 
+                <div className={`w-16 h-16 md:w-40 md:h-40 ${v.color} 
                                               hover:scale-105 hover:cursor-pointer ${v.hoverColor}
                                               rounded-xl flex flex-col justify-between items-center p-4
                                               `}
