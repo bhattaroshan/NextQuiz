@@ -22,6 +22,7 @@ function Questions() {
         <svg height="120" width="120">
             <circle ref={circleRef} strokeWidth="10" stroke='white' fill='transparent' strokeDashoffset={2*Math.PI*50/2} r={50} cx={60} cy={60}/>
         </svg>
+        <p className="text-white">another testing</p>
     </>
   )
 }
