@@ -7,7 +7,26 @@ import { useDispatch } from 'react-redux';
 import {setGenre} from '@/redux/features/genre-slice';
 import { useRouter } from 'next/navigation';
 
-export default function Home() {
+const baseURL = "https://openlibrary.org/people/bhattaroshan/books/already-read.json";
+
+async function getData() {
+  const res = await fetch(baseURL);
+ 
+  // Recommendation: handle errors
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data')
+  }
+ 
+  return res.json()
+}
+
+export default async function Home() {
+
+  const data = await getData();
+  const entries = data.reading_log_entries;
+
+  
 
   const categories = [
     {
@@ -84,8 +103,10 @@ export default function Home() {
     }
   ]
 
+ 
+
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex flex-col gap-10 justify-center items-center my-20">
       <div className="grid grid-cols-4 gap-4">
         {
         categories.map((v,i)=>{
@@ -108,6 +129,16 @@ export default function Home() {
         })
       }
       </div>
+      {
+        entries.map((v,i)=>{
+          console.log(v?.work?.title);
+          return (
+            <div key={i} className='w-5/12 bg-flat-red text-white rounded-lg '>
+              <p className='p-4 text-xl '>{i+1}. {v?.work?.title}</p>
+            </div>
+          );
+        })
+      }
     </div>
   );
 }

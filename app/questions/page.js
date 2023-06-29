@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react'
 import { useSearchParams } from 'next/navigation';
 
+
 function Questions() {
     const searchParams = useSearchParams();
     const topic = searchParams.get("topic");
