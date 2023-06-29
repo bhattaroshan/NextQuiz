@@ -10,7 +10,7 @@ import { useRouter } from 'next/navigation';
 const baseURL = "https://openlibrary.org/people/bhattaroshan/books/already-read.json";
 
 async function getData() {
-  const res = await fetch(baseURL);
+  const res = await fetch(baseURL,{cache:'no-store'});
  
   // Recommendation: handle errors
   if (!res.ok) {
