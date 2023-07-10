@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-let name:number = 65;
+let name:number = 66;
 let test:string = "my name is roshan";
 
 name = 56;
