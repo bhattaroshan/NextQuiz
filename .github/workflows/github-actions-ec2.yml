@@ -33,5 +33,9 @@ jobs:
            #sudo systemctl start apache2
            #sudo systemctl enable apache2
            cd home
+           yarn i
+           yarn build
+           pm2 delete yarn
+           pm2 start yarn -- start
            #sudo mv * /var/www/html
       
