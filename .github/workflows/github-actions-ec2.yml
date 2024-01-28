@@ -36,7 +36,7 @@ jobs:
            export NVM_DIR=~/.nvm
            source ~/.nvm/nvm.sh
            npm --help
-           yarn i
+           yarn install
            yarn build
            pm2 delete yarn
            pm2 start yarn -- start
