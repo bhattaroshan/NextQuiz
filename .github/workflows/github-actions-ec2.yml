@@ -33,6 +33,9 @@ jobs:
            #sudo systemctl start apache2
            #sudo systemctl enable apache2
            cd home
+           export NVM_DIR=~/.nvm
+           source ~/.nvm/nvm.sh
+           npm --help
            yarn i
            yarn build
            pm2 delete yarn
