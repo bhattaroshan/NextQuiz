@@ -44,9 +44,7 @@ jobs:
            npm --help
            yarn install
            yarn build
-           #pm2 delete yarn || : && pm2 start yarn -- start
-           pm2 delete yarn
-           pm2 start yarn -- start 
+           pm2 restart yarn
            
     
       
