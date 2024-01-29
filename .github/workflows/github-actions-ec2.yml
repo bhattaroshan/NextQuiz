@@ -46,7 +46,7 @@ jobs:
            yarn build
            pm2 delete yarn || : && pm2 start yarn -- start
            #pm2 delete yarn
-           #pm2 start yarn -- start
+           #pm2 start yarn -- start 
            
     
       
