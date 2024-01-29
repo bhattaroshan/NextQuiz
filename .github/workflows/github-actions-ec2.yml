@@ -1,3 +1,4 @@
+
 name: Hello World
 
 on:
@@ -21,6 +22,15 @@ jobs:
         REMOTE_USER: ${{ secrets.USERNAME }}
         TARGET: ${{ secrets.TARGET_DIR }}
 
+     - name: Cache Node modules
+       uses: actions/cache@v2
+       with:
+         path: |
+           ~/.npm
+           ~/.cache
+           ./home/node_modules
+         key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+         
      - name: Executing remote ssh commands using ssh key
        uses: appleboy/ssh-action@master
        with:
@@ -41,4 +51,6 @@ jobs:
            pm2 delete yarn
            pm2 start yarn -- start
            #sudo mv * /var/www/html
+           
+    
       
