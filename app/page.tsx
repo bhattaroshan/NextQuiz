@@ -12,6 +12,7 @@ export default function Home() {
       <p>{test}</p>
       <p>Is there anything I can do for you?</p>
       <p>Testing here okay!</p>
+      <p>Hero is here.</p>
     </>
   )
 }
