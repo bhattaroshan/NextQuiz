@@ -44,7 +44,7 @@ jobs:
            npm --help
            yarn install
            yarn build
-           pm2 restart yarn --name "NextApp" || : && pm2 start yarn -- start --name "NextApp"
+           pm2 restart yarn "NextApp" || : && pm2 start yarn -- start --name "NextApp"
            
     
       
