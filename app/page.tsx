@@ -11,6 +11,7 @@ export default function Home() {
         <Typography className='font-bold mb-6'>LogIn</Typography>
         <Input disableUnderline className='border rounded px-2'/>
         <Button variant='outlined' className='my-2'>Log In</Button>
+        <Button variant='outlined' className='my-2'>Log Out</Button>
       </div>
     </div>
   )

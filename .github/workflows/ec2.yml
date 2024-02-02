@@ -38,6 +38,7 @@ jobs:
           target: "roshan"
           script: |
             cd "roshan"
-            pm2 restart NextApp || : && pm2 start npm --name NextApp -- start
+            pm2 delete NextApp
+            pm2 start npm --name NextApp -- start
       
         
