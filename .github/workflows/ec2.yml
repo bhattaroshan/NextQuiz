@@ -22,7 +22,6 @@ jobs:
           node-version: ${{ matrix.node-version}}
           cache: 'npm'
       
-      - run: npm ci
       - run: npm install
       - run: npm run build --if-present
 
@@ -32,5 +31,5 @@ jobs:
           host: ${{ secrets.HOST_DNS }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: ".next/**"
+          source: ".next"
           target: "roshan"
