@@ -25,6 +25,9 @@ jobs:
       - run: npm install
       - run: npm run build --if-present
 
+      - name: Display all the build files
+        run: ls -R
+
       - name: Copy to EC2
         uses: appleboy/scp-action@master
         with:
