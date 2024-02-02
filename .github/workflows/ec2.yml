@@ -23,7 +23,7 @@ jobs:
           cache: 'npm'
       
       - run: npm install
-      - run: npm run build --if-present
+      - run: npm run build
 
       - name: Display all the build files
         run: ls -R
@@ -34,5 +34,5 @@ jobs:
           host: ${{ secrets.HOST_DNS }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: ".next"
+          source: "./"
           target: "roshan"
