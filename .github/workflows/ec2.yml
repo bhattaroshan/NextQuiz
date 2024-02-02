@@ -11,6 +11,7 @@ jobs:
     strategy:
       matrix:
         node-version: [19.x]
+        environment: [prod,uat,dev]
 
     steps:
       - name: Checkout code
@@ -42,7 +43,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd "roshan"
+            echo "my name is tori" > tori
             pm2 delete NextApp
             pm2 start npm --name NextApp -- start
       
-        
