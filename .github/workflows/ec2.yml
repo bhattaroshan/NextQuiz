@@ -23,7 +23,7 @@ jobs:
           cache: 'npm'
       
       - run: npm install
-      - run: echo "my name is tori">tori
+      - run: echo "${{secrets.PROD_ENV}}">tori
       - run: npm run build
 
       - name: Copy to EC2
