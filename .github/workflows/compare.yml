@@ -34,15 +34,15 @@ jobs:
 
       - run: yarn install
       - run: yarn run build
-      - name: rsync deployments
-        uses: burnett01/rsync-deployments@5.2
-        with:
-          switches: -avzr --delete
-          path: ./
-          remote_path: /home/ubuntu/nextapp/
-          remote_host: ${{ secrets.HOST_DNS }}
-          remote_user: ${{ secrets.USERNAME }}
-          remote_key: ${{ secrets.EC2_SSH_KEY }}
+      # - name: rsync deployments
+      #   uses: burnett01/rsync-deployments@5.2
+      #   with:
+      #     switches: -avzr --delete
+      #     path: ./
+      #     remote_path: /home/ubuntu/nextapp/
+      #     remote_host: ${{ secrets.HOST_DNS }}
+      #     remote_user: ${{ secrets.USERNAME }}
+      #     remote_key: ${{ secrets.EC2_SSH_KEY }}
       
       - name: Start pm2 using ssh
         uses: appleboy/ssh-action@master
@@ -51,6 +51,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
+            rsync -avr --delete ./ ${{ secrets.USERNAME }}@${{ secrets.HOST_DNS }}:/home/ubuntu/nextapp
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
             cd /home/ubuntu/nextapp/

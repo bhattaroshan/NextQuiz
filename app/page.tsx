@@ -14,6 +14,7 @@ export default function Home() {
         <Button variant='outlined' sx={{my:'10px'}}>Log Out</Button>
         <Button variant='outlined' sx={{my:'10px'}}>Profile</Button>
         <Typography>Testing here</Typography>
+        <Typography className='font-thin text-sm mt-4 text-gray-500'>All rights reserved</Typography>
       </div>
     </div>
   )
