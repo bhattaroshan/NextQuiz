@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [19.x]
+        node-version: [21.5.0]
 
     steps:
       - name: Checkout code
@@ -43,6 +43,8 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd "roshan"
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh
             pm2 delete NextApp
             pm2 start npm --name NextApp -- start
       
