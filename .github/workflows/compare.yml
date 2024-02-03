@@ -36,11 +36,8 @@ jobs:
       - run: yarn install
       - run: yarn run build
       - run: ls -a
-      - name: Run comparision script
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST_DNS }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            ls .
+      - run: rsync -avr ./ -e "ssh -i '${{secrets.EC2_SSH_KEY}} ./ '${{secrets.USERNAME}}'@'${{secrets.HOST_DNS}}':/home/ubuntu/nextapp
+        # ${{ secrets.USERNAME }}@${{ secrets.HOST_DNS }}:/path/to/remote/root/
+        # host: ${{ secrets.HOST_DNS }}
+        # username: ${{ secrets.USERNAME }}
+        # key: ${{ secrets.EC2_SSH_KEY }}
