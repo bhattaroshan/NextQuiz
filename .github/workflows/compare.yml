@@ -53,6 +53,7 @@ jobs:
           script: |
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
+            cd /home/ubuntu/nextapp/
             pm2 delete NextApp
             pm2 start yarn --name NextApp -- start
             pm2 save
