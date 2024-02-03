@@ -22,6 +22,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version}}
           cache: 'npm'
+
       - name: Cache Yarn dependencies
         uses: actions/cache@v2
         with:
@@ -34,7 +35,7 @@ jobs:
 
       - run: yarn install
       - run: yarn run build
-      - run: ls .
+      - run: ls -a
       - name: Run comparision script
         uses: appleboy/ssh-action@master
         with:
