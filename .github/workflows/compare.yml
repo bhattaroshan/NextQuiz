@@ -50,8 +50,9 @@ jobs:
           host: ${{ secrets.HOST_DNS }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
+          source: './'
+          target: '/home/ubuntu/nextapp'
           script: |
-            rsync -avr --delete ./ ${{ secrets.USERNAME }}@${{ secrets.HOST_DNS }}:/home/ubuntu/nextapp
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
             cd /home/ubuntu/nextapp/
