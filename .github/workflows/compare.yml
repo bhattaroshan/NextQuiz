@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - run: ls .
       - name: Run comparision script
         uses: appleboy/ssh-action@master
         with:
