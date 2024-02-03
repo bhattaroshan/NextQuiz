@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    # download all the files from main branch to git runner
+      - name: Checkout code 
+        uses: actions/checkout@v4
+
       - run: ls .
       - name: Run comparision script
         uses: appleboy/ssh-action@master
