@@ -34,24 +34,29 @@ jobs:
 
       - run: yarn install
       - run: yarn run build
-      # - name: rsync deployments
-      #   uses: burnett01/rsync-deployments@5.2
-      #   with:
-      #     switches: -avzr --delete
-      #     path: ./
-      #     remote_path: /home/ubuntu/nextapp/
-      #     remote_host: ${{ secrets.HOST_DNS }}
-      #     remote_user: ${{ secrets.USERNAME }}
-      #     remote_key: ${{ secrets.EC2_SSH_KEY }}
-      
+    
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v35
+        with:
+          since_last_remote_commit: true
+          separator: ","
+
+      - name: copy file to server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST_DNS }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: ${{ steps.changed-files.outputs.all_changed_files }}
+          target: /home/ubuntu/nextapp
+
       - name: Start pm2 using ssh
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST_DNS }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: './'
-          target: '/home/ubuntu/nextapp'
           script: |
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
