@@ -40,7 +40,11 @@ jobs:
         run: |
           if [ "${{ github.ref }}" == "refs/heads/dev" ]; then
             HOST_DNS="${{ secrets.DEV_HOST_DNS }}"   
-            echo "HOST_DNS=${HOST_DNS} >> $GITHUB_ENV
+            echo "HOST_DNS=${HOST_DNS}" >> $GITHUB_ENV
+            HOST_USERNAME="${{ secrets.DEV_HOST_USERNAME }}"
+            echo "HOST_USERNAME=${HOST_USERNAME}" >> $GITHUB_ENV
+            HOST_SSH_KEY="${{ secrets.DEV_SSH_KEY }}"
+            echo "HOST_SSH_KEY=${HOST_SSH_KEY}" >> $GITHUB_ENV
           fi
 
       # - name: rsync deployments
