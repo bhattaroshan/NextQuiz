@@ -39,18 +39,18 @@ jobs:
       - name: Set environment variables
         run: |
           if [ "${{ github.ref }}" == "refs/heads/dev" ]; then
-            echo "${{ github.ref }}" 
+            HOST_DNS="${{ secrets.DEV_HOST_DNS }}"   
           fi
 
-      - name: rsync deployments
-        uses: burnett01/rsync-deployments@master
-        with:
-          switches: -avzr --delete 
-          path: ./
-          remote_path: /home/ubuntu/nextapp/
-          remote_host: ${{ env.HOST_DNS }} 
-          remote_user: ${{ env.HOST_USERNAME }}
-          remote_key: ${{ env.HOST_SSH_KEY }} 
+      # - name: rsync deployments
+      #   uses: burnett01/rsync-deployments@master
+      #   with:
+      #     switches: -avzr --delete 
+      #     path: ./
+      #     remote_path: /home/ubuntu/nextapp/
+      #     remote_host: ${{ env.HOST_DNS }} 
+      #     remote_user: ${{ env.HOST_USERNAME }}
+      #     remote_key: ${{ env.HOST_SSH_KEY }} 
 
       # - name: Start pm2 using ssh
       #   uses: appleboy/ssh-action@master
