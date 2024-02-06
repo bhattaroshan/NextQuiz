@@ -51,6 +51,7 @@ jobs:
             echo "HOST_USERNAME=${{ secrets.PROD_HOST_USERNAME }}" >> $GITHUB_ENV
             echo "HOST_SSH_KEY=${{ secrets.PROD_SSH_KEY }}" >> $GITHUB_ENV
           fi
+        shell: /usr/bin/bash -e {0}
 
       - name: rsync deployments
         uses: burnett01/rsync-deployments@master
