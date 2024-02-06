@@ -44,6 +44,7 @@ jobs:
             HOST_USERNAME="${{ secrets.DEV_HOST_USERNAME }}"
             echo "HOST_USERNAME=${HOST_USERNAME}" >> $GITHUB_ENV
             HOST_SSH_KEY="${{ secrets.DEV_SSH_KEY }}"
+            echo "HOST_SSH_KEY=${HOST_SSH_KEY}" >> $GITHUB_ENV           
           fi
 
       # - name: rsync deployments
