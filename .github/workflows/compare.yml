@@ -35,6 +35,14 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - run: yarn install
+      # - run: |
+      #     if [ "${{ github.ref }}" == "refs/heads/dev" ]; then
+      #       echo "${{secrets.DEV_ENV}}">.env
+      #     elif [ "${{ github.ref }}" == "refs/heads/uat" ]; then
+      #       echo "${{secrets.UAT_ENV}}">.env
+      #     elif [ "${{ github.ref }}" == "refs/heads/main" ]; then
+      #       echo "${{secrets.PROD_ENV}}">.env
+      #     fi
       - run: yarn run build
 
       - name: Set environment variables
