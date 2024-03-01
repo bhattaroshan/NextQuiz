@@ -6,8 +6,8 @@ import { Button, Input, Typography } from '@mui/material'
 
 
 export default function Home() {
-  // const language = headers().get('Content-Language');
-  // console.log(language);
+  const language = headers().get('Content-Language');
+  console.log(language);
 
   return (
     <div className='flex flex-col justify-center items-center w-screen h-screen gap-4'>
@@ -21,8 +21,8 @@ export default function Home() {
         <Typography>Testing here</Typography>
         <Typography className='font-thin text-sm mt-4 text-gray-500'>All rights reserved</Typography>
         {
-          // language??
-          // <Typography>{language}</Typography>
+          language??
+          <Typography>{language}</Typography>
         }
       </div>
     </div>
