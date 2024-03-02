@@ -6,7 +6,7 @@ import { Button, Input, Typography } from '@mui/material'
 
 
 export default function Home() {
-  const language = headers().get('Content-Language');
+  const language = headers().get('Accept-Language');
   console.log(language);
 
   return (
