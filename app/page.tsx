@@ -1,10 +1,14 @@
 import Image from 'next/image'
+import { headers } from 'next/headers'
 import { Button, Input, Typography } from '@mui/material'
 
 
 
 
 export default function Home() {
+  const language = headers().get('Accept-Language');
+  console.log(language);
+
   return (
     <div className='flex flex-col justify-center items-center w-screen h-screen gap-4'>
       <Typography className='font-bold text-xl'>Hello Everybody</Typography>
@@ -16,6 +20,10 @@ export default function Home() {
         <Button variant='outlined' sx={{my:'10px'}}>Profile</Button>
         <Typography>Testing here</Typography>
         <Typography className='font-thin text-sm mt-4 text-gray-500'>All rights reserved</Typography>
+        {
+          language??
+          <Typography>{language}</Typography>
+        }
       </div>
     </div>
   )
